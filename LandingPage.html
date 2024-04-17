@@ -2,54 +2,40 @@
 <html>
   <head>
     <meta charset="UTF-8" />
-
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css" />
     <title>Video Game Database</title>
   </head>
   <style>
-    header {
-      background-color: #333;
-      color: aqua;
-      padding: 10px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-    .Login_Button {
-      color: #0037ff;
-      background-color: #ffffff;
-      font-size: 19px;
-      border: 1px solid #000000;
-      border-radius: px;
-      padding: 15px 50px;
-      letter-spacing: 1px;
-      cursor: pointer;
-    }
-    .Login_Button:hover {
-      color: #2d63c8;
-      background-color: #cfcfcf;
-    }
-    .column {
-      display: flex;
+   .header{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+   }
 
-      padding: 20px;
-    }
+   .header h1{
+    white-space: nowrap;
+   }
 
-    .column1 {
-      margin-bottom: 20px; /* Space between columns */
-      padding: 20px; /* Padding */
-      border-radius: 10px; /* Rounded corners */
-      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Shadow effect */
-    }
+   .login-buttons p{
+    display: inline-block;
+   }
+
+ 
   </style>
+  <header class="w3-container w3-red header">
+      <div class="w3-left-align">
+        <h1>Game Recommender</h1>
+      </div>
+      <div class="w3-bar w3-right-align login-buttons ">
+        <p>Welcome back,</p>     
+        <a href="Login.html"><button class="w3-button w3-blue">Login!</button></a>
+        <a href="SignUp.html"><button class="w3-button w3-yellow">Sign Up!</button></a>
+      </div>
+    </div>
+  </header>
 
   <body>
-    <header>
-      <h1 class="sitename">Game Recommender</h1>
-      <div>
-        <a href="Login.html"><button class="Login_Button">Login!</button></a>
-        <a href="SignUp.html"><button class="Login_Button">Sign Up!</button></a>
-      </div>
-    </header>
+    
     <div class="column">
       <div class="column1">
         <h2>Column 1</h2>
@@ -60,6 +46,6 @@
         <h2>column2</h2>
         <p>asdf</p>
       </div>
-    </div>
+    
   </body>
 </html>
