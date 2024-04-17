@@ -40,16 +40,30 @@
       </p>
     </div>
 
-    <form class="w3-container w3-teal form">
+    <form action="register.php" class="w3-container w3-teal form">
+      <p>
+        <label>Email</label>
+        <input class="w3-input" type="email" placeholder="example@gmail.com" required/>
+      </p>
+
       <p>
         <label>Username</label>
-        <input class="w3-input" type="text" />
+        <input class="w3-input" type="text" placeholder="Enter a unique username" required/>
+        (between 6-14 characters)
       </p>
 
       <p>
         <label>Password</label>
-        <input class="w3-input" type="text" />
+        <input class="w3-input" type="text" placeholder="Enter a strong password" required/>
+        (Must be at least 8 characters with a digit and special character ie. !,#,etc)
       </p>
+
+      <p>
+        <label>Birthday</label>
+        <input class="w3-input" type="date" required/>
+      </p>
+      
+      <button class="w3-btn w3-blue">Register</button>
     </form>
   </body>
 </html>
