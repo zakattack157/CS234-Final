@@ -53,7 +53,7 @@
         <label>Password</label>
         <input
           class="w3-input"
-          type="text"
+          type="password"
           id="pass"
           name="pass"
           placeholder="Enter password"

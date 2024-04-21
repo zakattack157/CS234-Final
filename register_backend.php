@@ -44,6 +44,7 @@
         $password = $_POST['pass'];
         $email = $_POST['email'];
         $birthday = $_POST['birthdate'];
+        $today = date('Y-m-d');
 
         $dsn =  'mysql:host=localhost;dbname=vglib';
         $username_db = 'php';
@@ -62,7 +63,7 @@
     }
 
     if($check_format == "correct" && $check_username == "nonexistent"){
-        $sql ='INSERT INTO user_info (Email, Username, `Password`, Birthdate) VALUES (:email, :username, :pass, :birthdate)';
+        $sql ='INSERT INTO user_info (Email, Username, `Password`, Birthdate, Join_Date) VALUES (:email, :username, :pass, :birthdate, :todays_date)';
         $statement = $pdo->prepare($sql);
 
         $pass_hash = password_hash($password, PASSWORD_BCRYPT);
@@ -71,10 +72,12 @@
         $statement->bindParam(':username', $username);
         $statement->bindParam(':pass', $pass_hash);
         $statement->bindParam(':birthdate', $birthday);
+        $statement->bindParam(':todays_date', $today);
 
         $statement->execute();
 
         header('Location: LandingPage.php');
+        exit();
     }
 
     else{

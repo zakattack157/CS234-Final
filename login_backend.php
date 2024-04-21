@@ -23,6 +23,17 @@ function confirm_creds($username, $password, $pdo){
 
 }
 
+function fetch_pfp($username, $pdo){
+    $sql = 'SELECT Profile_Picture FROM profile_info WHERE Username = ?';
+    $statement = $pdo->prepare($sql);
+    $statement->execute([$username]);
+
+    $info = $statement->fetch();
+    $pfp_blob = $info['Profile_Picture'];
+    $pfp_base64 = base64_encode($pfp_blob);
+    return $pfp_base64;
+}
+
 
 if($_SERVER['REQUEST_METHOD'] == 'POST'){
     $username = $_POST['username'];
@@ -42,9 +53,21 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
 
     $check_acct = confirm_creds($username, $password, $pdo);
 
+
     if($check_acct == 'good creds'){
         $_SESSION['username'] = $username;
+        $profile_pic = fetch_pfp($username, $pdo);
+        $_SESSION['pfp'] = $profile_pic;
+        $currentTime = time();
+
+        $sql = 'UPDATE profile_info SET last_online = CURRENT_TIMESTAMP WHERE Username = ?';
+        $statement = $pdo->prepare($sql);
+        $statement->execute([$username]);        
+
+        $_SESSION['time'] = "Last online: now";
+        
         header('Location: LandingPage.php');
+        exit();
     }
 
     else{
